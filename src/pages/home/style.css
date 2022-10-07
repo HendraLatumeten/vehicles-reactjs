@@ -1,0 +1,66 @@
+
+.content{
+
+
+
+mix-blend-mode: normal;
+}
+.contentName{
+
+
+
+
+font-family: 'Playfair Display';
+font-style: normal;
+font-weight: 700;
+font-size: 36px;
+line-height: 50px;
+margin-top: 200px;
+padding-top: 50px;
+/* or 139% */
+
+
+color: #000000;
+
+mix-blend-mode: normal;
+}
+.contentTest{
+
+
+
+
+    font-family: 'Playfair Display';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 50px;
+    margin-top: 200px;
+    padding-top: 50px;
+    /* or 139% */
+    
+    
+    color: #000000;
+    
+    mix-blend-mode: normal;
+    }
+
+.cardName{
+    margin-top: 20px;
+}
+.img{
+   height: 250px;
+   
+}
+.img-fluid {
+    max-width: 100%;
+    height: 200px;
+    /* justify-content: center; */
+    align-content: center;
+}
+.bi-star-fill{
+ 
+    color: rgb(190, 190, 8); 
+    margin-bottom:100rem;
+   
+   
+}

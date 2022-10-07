@@ -1,0 +1,24 @@
+Carousels{
+height: 20000px !important;
+}
+.caroselName{
+    position: absolute;
+    left: 8.4%;
+    right: 60.88%;
+    top: 3.63%;
+   
+    
+    font-family: 'Playfair Display';
+    font-style: normal;
+ /* font-weight: 700; */
+    font-size: 40px;
+    /* line-height: 60px; */
+    text-align: left;
+    /* or 125% */
+    
+    
+    color: #202336;
+    
+    mix-blend-mode: normal;
+}
+
