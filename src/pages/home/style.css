@@ -1,13 +1,16 @@
 
 .content{
 
-
-
 mix-blend-mode: normal;
+position: relative;
 }
+/* .list{
+    display: flex;
+flex-wrap: wrap;
+justify-content: space-between;
+
+} */
 .contentName{
-
-
 
 
 font-family: 'Playfair Display';
@@ -15,7 +18,7 @@ font-style: normal;
 font-weight: 700;
 font-size: 36px;
 line-height: 50px;
-margin-top: 200px;
+margin-top: 20px;
 padding-top: 50px;
 /* or 139% */
 
@@ -64,3 +67,5 @@ mix-blend-mode: normal;
    
    
 }
+
+

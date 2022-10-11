@@ -1,0 +1,120 @@
+.formLogin{
+    text-align: center;
+}
+.vl {
+    border-left: 2px solid rgb(231, 253, 249);
+    height: 600px;
+    position: absolute;
+    left: 50%;
+    margin-left: -3px;
+    top: 90px;
+    bottom: 2;
+  }
+  .bglogin{
+    height: 758px;
+    width: 100%;
+    display: block;
+    background-size: cover;
+    height: 768px;
+    width: 100%;
+    position: relative;
+    filter: brightness(50%);
+   
+   
+}
+  .titleName{
+    position: absolute;
+width: 300px;
+height: 168px;
+left: 100px;
+top: 107px;
+text-align: center;
+font-family: 'Playfair Display';
+font-style: normal;
+font-weight: 700;
+font-size: 40px;
+line-height: 85px;
+
+color: #FFFFFF;
+
+}
+.text1{
+    font-family: 'Nunito';
+    font-size: 20px;
+    padding-top: 10px;
+    margin-bottom: 3px;
+}
+.button1{
+    font-family: 'Nunito' !important;
+    background-color:#393939 !important;
+    box-shadow:0px 0px 20px rgba(218, 218, 218, 0.25);
+    border:none !important;
+    width:200px;
+    color: yellow !important;
+    height: 50px;
+}
+.button2{
+    background-color: #FFCD61!important;
+    box-shadow:0px 0px 20px rgba(218, 218, 218, 0.25);
+    border:none !important;
+    width:370px !important;
+    margin-top: 70px;
+    color: black !important;
+    height: 60px;
+    justify-content: center !important;
+    
+} 
+.button3{
+    background-color: #ffffff!important;
+    box-shadow:0px 0px 20px rgba(218, 218, 218, 0.25);
+    border:none !important;
+    width:370px !important;
+    margin-top: 70px;
+    color: black !important;
+    height: 60px;
+    justify-content: center !important;
+    
+} 
+
+Form{
+    position: absolute;
+    top: 100px;
+   align-content: center;
+   
+}
+
+input {
+    margin-top: 50px !important;
+    border: none !important ;
+    width: 370px !important;
+    height:60px;
+    top: 250px;
+    /* margin: 10; */
+    padding: 0px;
+    color: rgb(0, 0, 0) !important; 
+    opacity:  0.5!important; 
+}
+input::placeholder {
+    color: rgb(0, 0, 0) !important; 
+    
+    font-size: 1.2em;
+    
+}
+
+  
+ 
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(-45%);
+    animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+    -webkit-transform: translateY(-45%);
+    -moz-transform: translateY(-45%);
+    -ms-transform: translateY(-45%);
+    -o-transform: translateY(-45%);
+}
+  50% {
+    transform: translateY(0);
+    animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  }
+}

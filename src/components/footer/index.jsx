@@ -1,6 +1,6 @@
 import React from 'react'
 import Image from 'react-bootstrap/Image'
-
+import {Link} from 'react-router-dom'
 function footer() {
 return (
 
@@ -13,7 +13,9 @@ return (
                 <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
 
                     <h6 class="text-uppercase fw-bold mb-4">
+                        <Link to="/">
                         <Image src={require('../../assets/logo1.png')} />
+                        </Link>
                     </h6>
                     <p>
                         Plan and book your perfect trip with
