@@ -44,11 +44,7 @@ return (<> <Img className='bglogin' src={ bgLogin } alt="" />
                     <Form.Group className="mb-3 formGrup" controlId="formBasicPassword">
                         <Form.Control type="password" placeholder="Password" />
                     </Form.Group> 
-                    
                     <Button className='button2' type="submit"> <b> Sign Up</b> </Button>
-                   
-                    
-                    
                     <div className="d-lg-none d-md-block"> <svg class="animate-bounce w-6 h-6 ..."> </svg>
                         <p className='text1' style={ { color:'white', marginTop:40 } }>Don’t have account?</p>
                         <Link to="/login">

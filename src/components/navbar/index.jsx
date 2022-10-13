@@ -39,7 +39,7 @@ function CollapsibleExample() {
           </Nav.Item>
           <Nav.Item>
           <Link to="/register">
-          <Button variant="outline-warning">Register</Button>{' '}
+          <Button variant="warning">Register</Button>{' '}
           </Link>
           </Nav.Item>
           </Nav>

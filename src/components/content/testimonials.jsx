@@ -32,7 +32,7 @@ export class testimonials extends Component {
         </Col>
     </Row>
     <br></br>
-    <hr></hr>
+
     </Container>
     )
   }

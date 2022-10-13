@@ -12,6 +12,7 @@ import Popular from '../../components/content/popular.jsx';
 import Navbars from '../../components/navbar'
 import Footer from '../../components/footer'
 import axios from 'axios';
+import {Link} from 'react-router-dom'
 
 
 export class vehicle_type extends Component {
@@ -63,7 +64,7 @@ return (
     </Container>
 
     <Popular />
-    
+
      <Container>
      <h3 className="contentName">Cars</h3>
         <Row>
@@ -75,7 +76,12 @@ return (
                                 <Col key={k} lg={3} sm={12}>
                                 <Card className="text-center cardName shadow">
                                     <Image src={v.image} className="img" />
-                                    <Button variant="light"><p>{v.name} -{v.city}</p></Button>
+                                    <Button variant="light">
+                                    <Link to={`/detail_vehicle/${v.vehicles_id}`}>
+
+                                        <p style={{color:'black'}}>{v.name} -{v.city}</p>
+                                    </Link>
+                                    </Button>
                                 </Card>
                                 </Col>
                             )
@@ -99,7 +105,13 @@ return (
                                 <Col key={k} lg={3} sm={12}>
                                 <Card className="text-center cardName shadow">
                                     <Image src={v.image} className="img" />
-                                    <Button variant="light"><p>{v.name} -{v.city}</p></Button>
+                                    <Button variant="light">
+                                    <Link to={`/detail_vehicle/${v.vehicles_id}`}>
+
+                                        <p style={{color:'black'}}>{v.name} -{v.city}</p>
+                                    </Link>
+                                    </Button>
+                                  
                                 </Card>
                                 </Col>
                             )
@@ -123,22 +135,23 @@ return (
                                 <Col key={k} lg={3} sm={12}>
                                 <Card className="text-center cardName shadow">
                                     <Image src={v.image} className="img" />
-                                    <Button variant="light"><p>{v.name} -{v.city}</p></Button>
+                                    <Button variant="light">
+                                    <Link to={`/detail_vehicle/${v.vehicles_id}`}>
+
+                                        <p style={{color:'black'}}>{v.name} -{v.city}</p>
+                                    </Link>
+                                    </Button>
                                 </Card>
                                 </Col>
                             )
                         }        
-                        return (<Col key={k} lg={3} sm={12}></Col>)
-                            
+                        return (<Col key={k} lg={3} sm={12}></Col>)       
                        
                     })}
-
                 </Row>
             </div>
         </Row>
         <br></br>
-        <hr>
-        </hr>
     </Container> 
     <Footer />
 </>

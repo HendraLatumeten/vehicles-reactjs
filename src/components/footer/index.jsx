@@ -4,15 +4,15 @@ import {Link} from 'react-router-dom'
 function footer() {
 return (
 
-<footer class="text-center text-lg-start bg-white text-muted">
+<footer class="text-center text-lg-start text-muted"style={{backgroundColor:'#F9F9FB'}}>
     <section class="">
         <div class="container text-center text-md-start mt-5">
 
-            <div class="row mt-3">
+            <div class="row mt-3" >
 
                 <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
 
-                    <h6 class="text-uppercase fw-bold mb-4">
+                    <h6 class="text-uppercase fw-bold mb-4" style={{marginTop:30}}>
                         <Link to="/">
                         <Image src={require('../../assets/logo1.png')} />
                         </Link>
@@ -29,7 +29,7 @@ return (
 
                 <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
 
-                    <h6 class="text fw-bold mb-4">
+                    <h6 class="text fw-bold mb-4" style={{marginTop:30}}>
                         Destinations
                     </h6>
                     <p>
@@ -51,7 +51,7 @@ return (
 
                 <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
 
-                    <h6 class="text fw-bold mb-4">
+                    <h6 class="text fw-bold mb-4" style={{marginTop:30}}>
                         Vehicles
                     </h6>
                     <p>
@@ -73,7 +73,7 @@ return (
 
                 <div class="col-md-3 col-lg-3 col-xl-2 mx-auto mb-4">
 
-                    <h6 class="text fw-bold mb-4">
+                    <h6 class="text fw-bold mb-4" style={{marginTop:30}}>
                         Interest
                     </h6>
                     <p>
@@ -97,7 +97,7 @@ return (
         </div>
     </section>
 
-    <div class="text-center p-4" style={{backgroundColor:'#F9F9FB'}}>
+    <div class="text-center p-4">
         © 2022 Copyright:
 
     </div>
