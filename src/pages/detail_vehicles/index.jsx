@@ -56,6 +56,7 @@ return (
 
 
         <Col md={4} sm={12}>
+        <div style={{marginLeft:20}}>
         <h1 style={{fontFamily: 'Playfair Display' ,color:'black'}}>{result.name}</h1>
         <p>{result.city}</p>
         <p style={{color:'red'}}>
@@ -68,8 +69,9 @@ return (
             Reservation before 2 PM
         </p>
         <p>
-            <h3>Price: <i>300K</i></h3>
+            <h3>Price: <i>{result.price}K</i></h3>
         </p>
+        </div>
         </Col>
         <Col md={2}>
         </Col>
@@ -87,8 +89,8 @@ return (
         </div>
 
         </Col>
-        <Col md={4}>
-        <div className="btn-group" role="group">
+        <Col md={4} sm={2}>
+        <div className="btn-group " role="group">
             <button className="btn btn1" style={{backgroundColor:"#FFCD61"}}>
                 +
             </button>
@@ -104,13 +106,18 @@ return (
     <Row>
         <Col md={2}>
         </Col>
-        <Col md={8}>
+        <Col md={3}>
         <button className='btn btn3' style={{backgroundColor:"#393939",color:'#FFCD61'}}>
             Chat Admin
         </button>
+        </Col>
+        <Col md={3}>
+
         <button className='btn btn3' style={{backgroundColor:"#FFCD61",color:'black'}}>
             Reservation
         </button>
+        </Col>
+        <Col md={2}>
         <button className='btn btn4' style={{backgroundColor:"#393939",color:'yellow'}}>
         <i class="bi bi-heart-fill" style={{color:'#FFCD61'}}></i>Like 
         </button>

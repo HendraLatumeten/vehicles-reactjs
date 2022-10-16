@@ -48,13 +48,16 @@
 .btn3{
     margin: 10px;
     height: 70px;
-    width: 300px;
+    /* width: 200px; */
+    width: 100% !important;
+    
 }
 .btn4{
     /* margin: 20px; */
-    width: 150px;
+    width: 100% !important;
     height: 70px;
     margin: 10px;
+    
 }
 
 

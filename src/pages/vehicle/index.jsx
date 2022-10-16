@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { useState, useEffect } from 'react'
 import "bootstrap-icons/font/bootstrap-icons.css";
 import './style.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -13,40 +13,49 @@ import Navbars from '../../components/navbar'
 import Footer from '../../components/footer'
 import axios from 'axios';
 import {Link} from 'react-router-dom'
+// import { useParams } from 'react-router-dom/cjs/react-router-dom';
 
 
-export class vehicle_type extends Component {
-constructor(props){
-super(props)
-this.state ={
-arrData :"vehicle",
-vehicle: []
+function Vehicle_type() {
+const [result, setResult] = useState([])
+const [searchTerm, setSearchTerm] = useState("");
+
+const getData = async () => {
+const { data } = await axios.get(process.env.REACT_APP_URL)
+setResult(data.data);
+
+};
+let listToDisplay = result;
+
+const handleChange = (e) => {
+setSearchTerm(e.target.value);
+};
+
+
+
+if (searchTerm !== "") {
+listToDisplay = result.filter((result) => {
+return result.name.toLowerCase().includes(searchTerm)
+
+
+});
 }
-}
 
-async componentDidMount(){
-try {
-    const {data} = await (await axios.get(process.env.REACT_APP_URL)).data
-    this.setState({vehicle:data})
-} catch (error) {
-    console.log(error)
-}
-   }
+useEffect(() => {
+getData();
 
-   
+})
 
-render() {
+
 return (
 <>
-    
     <Navbars />
-{/* search */}
+    {/* search */}
     <Container>
         <Row>
-        <Col md={12}>
-        <form>
+
             <div class="relative w-full">
-                <input type="search" id="search"
+                <input type="search" id="search" value={searchTerm} onChange={handleChange}
                     class="block p-2.5 rounded z-20 text-sm text-gray-900 rounded-r-lg border-l-gray-50 border-l-2 border border-gray-300 dark:placeholder-gray-400 dark:text-white dark:blue-500"
                     placeholder="Search vehicle (ex, cars , carsname)" />
                 <button type="submit" class="absolute top-0 right-0 p-2.5 text-sm font-medium">
@@ -58,68 +67,61 @@ return (
                     <span class="sr-only">Search</span>
                 </button>
             </div>
-        </form>
-        </Col>
         </Row>
     </Container>
 
     <Popular />
 
-     <Container>
-     <h3 className="contentName">Cars</h3>
+    <Container>
+        <h3 className="contentName">Cars</h3>
         <Row>
             <div class="content">
                 <Row>
-                    {this.state.vehicle.map((v, k) => {   
-                        if (v.type_vehicles === "cars") {
-                            return (
-                                <Col key={k} lg={3} sm={12}>
-                                <Card className="text-center cardName shadow">
-                                    <Image src={v.image} className="img" />
-                                    <Button variant="light">
-                                    <Link to={`/detail_vehicle/${v.vehicles_id}`}>
-
-                                        <p style={{color:'black'}}>{v.name} -{v.city}</p>
-                                    </Link>
-                                    </Button>
-                                </Card>
-                                </Col>
-                            )
-                        }        
-                        return (<Col key={k} lg={3} sm={12}></Col>)
-                            
-                       
-                    })}
-
+                    {listToDisplay.map((v, k) => {
+                    return v.type_vehicles === "cars" ? (
+                    <Col key={k} lg={3} sm={12}>
+                    <Card className="text-center cardName shadow">
+                        <Image src={v.image} className="img" />
+                        <Button variant="light">
+                            <Link to={`/detail_vehicle/${v.vehicles_id}`}> <p style={{color:'black'}}>{v.name} -{v.city}
+                            </p>
+                            </Link>
+                        </Button>
+                    </Card>
+                    </Col>
+                    )
+                    :
+                    null
+                    }
+                    )
+                    }
                 </Row>
             </div>
         </Row>
+
 
         <h3 className="contentName">MotorBike</h3>
         <Row>
             <div class="content">
                 <Row>
-                    {this.state.vehicle.map((v, k) => {   
-                        if (v.type_vehicles === "motorbike") {
-                            return (
-                                <Col key={k} lg={3} sm={12}>
-                                <Card className="text-center cardName shadow">
-                                    <Image src={v.image} className="img" />
-                                    <Button variant="light">
-                                    <Link to={`/detail_vehicle/${v.vehicles_id}`}>
-
-                                        <p style={{color:'black'}}>{v.name} -{v.city}</p>
-                                    </Link>
-                                    </Button>
-                                  
-                                </Card>
-                                </Col>
-                            )
-                        }        
-                        return (<Col key={k} lg={3} sm={12}></Col>)
-                            
-                       
-                    })}
+                    {listToDisplay.map((v, k) => {
+                    return v.type_vehicles === "motor bike" ? (
+                    <Col key={k} lg={3} sm={12}>
+                    <Card className="text-center cardName shadow">
+                        <Image src={v.image} className="img" />
+                        <Button variant="light">
+                            <Link to={`/detail_vehicle/${v.vehicles_id}`}> <p style={{color:'black'}}>{v.name} -{v.city}
+                            </p>
+                            </Link>
+                        </Button>
+                    </Card>
+                    </Col>
+                    )
+                    :
+                    null
+                    }
+                    )
+                    }
 
                 </Row>
             </div>
@@ -129,34 +131,34 @@ return (
         <Row>
             <div class="content">
                 <Row>
-                    {this.state.vehicle.map((v, k) => {   
-                        if (v.type_vehicles === "bike") {
-                            return (
-                                <Col key={k} lg={3} sm={12}>
-                                <Card className="text-center cardName shadow">
-                                    <Image src={v.image} className="img" />
-                                    <Button variant="light">
-                                    <Link to={`/detail_vehicle/${v.vehicles_id}`}>
+                    {listToDisplay.map((v, k) => {
+                    return v.type_vehicles === "bike" ? (
+                    <Col key={k} lg={3} sm={12}>
+                    <Card className="text-center cardName shadow">
+                        <Image src={v.image} className="img" />
+                        <Button variant="light">
+                            <Link to={`/detail_vehicle/${v.vehicles_id}`}> <p style={{color:'black'}}>{v.name} -{v.city}
+                            </p>
+                            </Link>
+                        </Button>
+                    </Card>
+                    </Col>
+                    )
+                    :
+                    null
+                    }
+                    )
+                    }
 
-                                        <p style={{color:'black'}}>{v.name} -{v.city}</p>
-                                    </Link>
-                                    </Button>
-                                </Card>
-                                </Col>
-                            )
-                        }        
-                        return (<Col key={k} lg={3} sm={12}></Col>)       
-                       
-                    })}
                 </Row>
             </div>
         </Row>
+
         <br></br>
-    </Container> 
+    </Container>
     <Footer />
 </>
 )
 }
-}
 
-export default vehicle_type
+export default Vehicle_type
