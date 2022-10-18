@@ -121,32 +121,36 @@ return (
         </div>
         <Modal show={show} onHide={handleClose}>
             <Modal.Header closeButton>
-                <Modal.Title>Modal heading</Modal.Title>
+                <Modal.Title>Add  Data Vehicles</Modal.Title>
             </Modal.Header>
             <Modal.Body>
-            <div className="mb-3">
-                            <input type="text" onChange={onChangeInput} name="name" autoComplete="off"  />
+            <div className="addData">
+
+                         <div className="mb-3">
+                            <input type="text" onChange={onChangeInput} placeholder="Name" name="name" style={{border:30}}   />
                
                         </div>
                         <div  className="mb-3">
-                            <input type="text" onChange={onChangeInput} name="type_vehicles" autoComplete="off"  />
+                            <input type="text" onChange={onChangeInput} placeholder="Type vehicles" name="type_vehicles"  />
+
+                        </div>
+                        <div className="form-grup">
+                            <input type="text" onChange={onChangeInput} placeholder="City" name="city"  />
 
                         </div>
                         <div  className="mb-3">
-                            <input type="text" onChange={onChangeInput} name="city" autoComplete="off"  />
+                            <input type="text" onChange={onChangeInput} placeholder="Capacity" name="capacity"  />
 
                         </div>
                         <div  className="mb-3">
-                            <input type="text" onChange={onChangeInput} name="capacity" autoComplete="off"  />
+                            <input type="text" onChange={onChangeInput} placeholder="Price" name="price"   />
 
                         </div>
                         <div  className="mb-3">
-                            <input type="text" onChange={onChangeInput} name="price" autoComplete="off"  />
-
+                            <span>Image</span>
+                            <input type="file" onChange={onChangeFile} placeholder="Image"  name="image" />
                         </div>
-                        <div  className="mb-3">
-                            <input type="file" onChange={onChangeFile} name="image" autoComplete="off"  />
-                        </div>
+                </div>
             </Modal.Body>
             <Modal.Footer>
                 <Button variant="secondary" onClick={handleClose}>

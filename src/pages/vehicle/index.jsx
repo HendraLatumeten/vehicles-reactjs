@@ -13,34 +13,21 @@ import Navbars from '../../components/navbar'
 import Footer from '../../components/footer'
 import axios from 'axios';
 import {Link} from 'react-router-dom'
-//import { faCommentsDollar } from '@fortawesome/free-solid-svg-icons';
 // import { useParams } from 'react-router-dom/cjs/react-router-dom';
 
-
 function Vehicle_type() {
-const [result, setResult] = useState("")
-const [searchTerm, setSearchTerm] = useState("");
+const [result, setResult] = useState([])
+
 
 const getData = async () => {
-const { data } = await axios.get(process.env.REACT_APP_URL+`vehicles/search/metic`)
+const { data } = await axios.get(process.env.REACT_APP_URL+`vehicles/`)
 setResult(data.data);
-console.log(data.data)
-};
-// let listToDisplay = result;
-
-const handleChange = (e) => {
-setSearchTerm(e.target.value);
 };
 
 
 
-// if (searchTerm !== "") {
-// listToDisplay = result.filter((result) => {
-// return result.name.toLowerCase().includes(searchTerm)
 
 
-// });
-//}
 
 useEffect(() => {
 getData();
@@ -56,7 +43,7 @@ return (
         <Row>
 
             <div class="relative w-full">
-                <input type="search" id="search" value={searchTerm} onChange={handleChange}
+                <input type="search" id="search" 
                     class="block p-2.5 rounded z-20 text-sm text-gray-900 rounded-r-lg border-l-gray-50 border-l-2 border border-gray-300 dark:placeholder-gray-400 dark:text-white dark:blue-500"
                     placeholder="Search vehicle (ex, cars , carsname)" />
                 <button type="submit" class="absolute top-0 right-0 p-2.5 text-sm font-medium">
@@ -68,18 +55,22 @@ return (
                     <span class="sr-only">Search</span>
                 </button>
             </div>
+
+
         </Row>
     </Container>
 
     <Popular />
 
     <Container>
+
+
         <h3 className="contentName">Cars</h3>
         <Row>
             <div class="content">
                 <Row>
                     {result.map((v, k) => {
-                    return v.type_vehicles === "motor bike" ? (
+                    return v.type_vehicles === "cars" ? (
                     <Col key={k} lg={3} sm={12}>
                     <Card className="text-center cardName shadow">
                         <Image src={v.image} className="img" />
@@ -96,16 +87,17 @@ return (
                     }
                     )
                     }
+
                 </Row>
             </div>
         </Row>
 
 
-        {/* <h3 className="contentName">MotorBike</h3>
+        <h3 className="contentName">MotorBike</h3>
         <Row>
             <div class="content">
                 <Row>
-                    {listToDisplay.map((v, k) => {
+                    {result.map((v, k) => {
                     return v.type_vehicles === "motor bike" ? (
                     <Col key={k} lg={3} sm={12}>
                     <Card className="text-center cardName shadow">
@@ -132,7 +124,7 @@ return (
         <Row>
             <div class="content">
                 <Row>
-                    {listToDisplay.map((v, k) => {
+                    {result.map((v, k) => {
                     return v.type_vehicles === "bike" ? (
                     <Col key={k} lg={3} sm={12}>
                     <Card className="text-center cardName shadow">
@@ -153,7 +145,7 @@ return (
 
                 </Row>
             </div>
-        </Row> */}
+        </Row>
 
         <br></br>
     </Container>
