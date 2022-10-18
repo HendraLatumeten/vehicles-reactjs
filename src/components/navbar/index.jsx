@@ -47,7 +47,7 @@ function Navbars() {
          </Link>
          </Nav.Item> 
          </>
-         ) :isAuth && pathname === '/' ?(
+         ) : isAuth === true  ?(
           <Nav.Item style={{paddingRight:10}}>
     <Link to="/login">
                 <Button  w="100px" variant="warning" onClick={() => dispacth(logout())}>Logout</Button>

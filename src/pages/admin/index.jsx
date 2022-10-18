@@ -48,7 +48,7 @@ name: 'Action',
 cell:(row)=>
 <>
     <Button style={{margin:5}} w="100px" variant="outline-warning" id={row.vehicles_id}>Delete</Button>
-    <Button w="100px" variant="warning" id={row.vehicles_id}>Update</Button>
+    <Button w="100px" variant="warning">Update</Button>
 </>
 
 
@@ -80,6 +80,7 @@ const onChangeInput = (event) => {
 
 
 const postData = () => {
+    
     const formData = new FormData()
   
     for (const key in dataSave) {
@@ -93,7 +94,7 @@ const postData = () => {
         headers: {     
              Authorization: `Bearer ${token}`,
              "Content-Type": "multipart/form-data",
-             "Access-Control-Allow-Origin" : "http://localhost:3006" ,
+             "Access-Control-Allow-Origin" : "http://localhost:3000" ,
             },
         data: formData
     })
@@ -106,9 +107,10 @@ const postData = () => {
         })
 }
 
+
 useEffect(() => {
 getData();
-},[params])
+})
 
 return (
 <>

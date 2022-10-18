@@ -9,7 +9,7 @@ function useApi(urls = '') {
         baseURL: process.env.REACT_APP_URL || urls,
         headers: {
             'Content-Type': 'application/json',
-            Authorization: `Bearer ${token}`
+            Authorization: `Bearer ${token}`,
         } 
     })
 
@@ -24,10 +24,9 @@ function useApi(urls = '') {
         })
     }
     
-      
-
+    
     useEffect(() => {
-        setConfig()
+        setConfig();
     }, [])
 
     return { requests: axios.create(requests) }

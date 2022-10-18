@@ -30,7 +30,7 @@ useEffect(() => {
             <div class="content">
             <Row>
                     {popular.map((v, k) => {
-                    return v.type_vehicles === "cars" ? (
+                    return (
                     <Col key={k} lg={3} sm={12}>
                     <Card className="text-center cardName shadow">
                         <Image src={v.image} className="img" />
@@ -42,11 +42,11 @@ useEffect(() => {
                     </Card>
                     </Col>
                     )
-                    :
-                    null
                     }
                     )
                     }
+                
+                   
 
         </Row>
             </div>

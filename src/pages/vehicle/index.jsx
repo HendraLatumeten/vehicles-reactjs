@@ -17,20 +17,39 @@ import {Link} from 'react-router-dom'
 
 function Vehicle_type() {
 const [result, setResult] = useState([])
+const [params, setParams] = useState([])
+const [dataSearch, setData] = useState([])
 
 
 const getData = async () => {
 const { data } = await axios.get(process.env.REACT_APP_URL+`vehicles/`)
-setResult(data.data);
+    setResult(data.data);
 };
 
 
+const onSearch = (e) => {
+    setParams(e.target.value);
+};
+
+const SearchData = async () => {
+    const { data } = await axios.get(process.env.REACT_APP_URL+`vehicles/search/${params}`)
+        setData(data.data);
+}
+ 
 
 
 
 
 useEffect(() => {
-getData();
+    // if (params === null) {
+    // }else{
+    // }
+    SearchData();
+
+    getData();
+
+    
+
 
 })
 
@@ -43,10 +62,10 @@ return (
         <Row>
 
             <div class="relative w-full">
-                <input type="search" id="search" 
+                <input type="search" id="search" onChange={onSearch} 
                     class="block p-2.5 rounded z-20 text-sm text-gray-900 rounded-r-lg border-l-gray-50 border-l-2 border border-gray-300 dark:placeholder-gray-400 dark:text-white dark:blue-500"
                     placeholder="Search vehicle (ex, cars , carsname)" />
-                <button type="submit" class="absolute top-0 right-0 p-2.5 text-sm font-medium">
+                <button type="submit" class="absolute top-0 right-0 p-2.5 text-sm font-medium" onClick={SearchData} >
                     <svg aria-hidden="true" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                         xmlns="http://www.w3.org/2000/svg">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -56,7 +75,30 @@ return (
                 </button>
             </div>
 
+            <Row>
+            <div class="content">
+                <Row>
+                    {dataSearch.map((v, k) => {
+                    return (
+                    <Col key={k} lg={3} sm={12}>
+                    <Card className="text-center cardName shadow">
+                        <Image src={v.image} className="img" />
+                        <Button variant="light">
+                            <Link to={`/detail_vehicle/${v.vehicles_id}`}> <p style={{color:'black'}}>{v.name} -{v.city}
+                            </p>
+                            </Link>
+                        </Button>
+                    </Card>
+                    </Col>
+                    )
+                    
+                    }
+                    )
+                    }
 
+                </Row>
+            </div>
+        </Row>
         </Row>
     </Container>
 
@@ -64,6 +106,7 @@ return (
 
     <Container>
 
+        
 
         <h3 className="contentName">Cars</h3>
         <Row>
