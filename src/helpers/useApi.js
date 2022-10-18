@@ -1,17 +1,16 @@
-import {useState,useEffect} from 'react'
-// import {useSelector } from 'react-redux'
+import { useState, useEffect } from 'react'
+import { useSelector } from 'react-redux'
 import axios from 'axios'
 
-
 function useApi(urls = '') {
-    // const { token } = useSelector((state) => state.users)
+    const { token } = useSelector((state) => state.users)
 
     const [requests, setRequests] = useState({
         baseURL: process.env.REACT_APP_URL || urls,
         headers: {
             'Content-Type': 'application/json',
-            Authorization: `Bearer ${"token"}`
-        }
+            Authorization: `Bearer ${token}`
+        } 
     })
 
     const setConfig = () => {
@@ -19,14 +18,17 @@ function useApi(urls = '') {
             ...requests,
             headers: {
                 'Content-Type': 'application/json',
-                Authorization: `Bearer ${"token"}`
+                Authorization: `Bearer ${token}`
             }
+            
         })
     }
+    
+      
 
     useEffect(() => {
         setConfig()
-    },[])
+    }, [])
 
     return { requests: axios.create(requests) }
 }

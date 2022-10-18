@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Footer from '../../components/footer'
 import bgLogin from '../../assets/bglogin.png'
 import Row from 'react-bootstrap/Row'
@@ -10,13 +10,25 @@ import Button from 'react-bootstrap/Button'
 import "bootstrap-icons/font/bootstrap-icons.css";
 import './style.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {Link} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 import useApi from '../../helpers/useApi'
+
+import {login} from '../../store/reducer/users'
+import {useDispatch, useSelector} from 'react-redux'
 
  function Login() {
     const [Users, setUsers] = useState({ username: 'username',password: 'password' })
 
      const api = useApi()
+     const navigate = useNavigate()
+     const dispatch = useDispatch()
+    const {isAuth}= useSelector((state) =>state.users)
+
+    useEffect(() =>{
+        if (isAuth) {
+            navigate('/')
+        }
+    }, [isAuth])
 
     const onChangeInput = (event) => {
         event.preventDefault()
@@ -27,15 +39,17 @@ import useApi from '../../helpers/useApi'
     }
 
 
-    const daftar = () => {
+    const Login = () => {
         api.requests({
             method: 'POST',
-            url: 'auth/login',
+            url: 'auth',
             data: Users
         })
-            .then((res) => console.log(res))
+            .then((res) => {
+                const {token } = res.data.data
+                dispatch(login(token))
+            })
             .catch((err) => console.log(err))
-          //  console.log(Users)
     }
 
 
@@ -68,7 +82,7 @@ import useApi from '../../helpers/useApi'
                     <div className="mb-3 formGrup" >
                         <input type="password"  name="password" placeholder="Password"  onChange={onChangeInput} />
                     </div> 
-                    <Button className='button2' type="submit" onClick={daftar}> <b> Login</b> </Button>
+                    <Button className='button2' type="submit" onClick={Login}> <b> Login</b> </Button>
                     <div className="d-lg-none d-md-block"> <svg className="animate-bounce w-6 h-6 ..."> </svg>
                         <p className='text1' style={ { color:'white', marginTop:40 } }>Don’t have account?</p>
                         <Link to="/register">

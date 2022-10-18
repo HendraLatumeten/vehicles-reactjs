@@ -20,7 +20,7 @@ const { id } = useParams()
 
 
 const getDetail = async () => {
-const { data } = await axios.get(process.env.REACT_APP_URL+`/getBy/${id}`);
+const { data } = await axios.get(process.env.REACT_APP_URL+`vehicles/getBy/${id}`);
 setResult(data.data[0]);
 // console.log(data.data[0].name)
 };

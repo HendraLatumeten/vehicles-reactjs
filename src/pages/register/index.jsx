@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Footer from '../../components/footer'
 import bgLogin from '../../assets/bglogin.png'
 import Row from 'react-bootstrap/Row'
@@ -6,17 +6,18 @@ import Col from 'react-bootstrap/Col'
 import Container from 'react-bootstrap/Container'
 import Img from 'react-bootstrap/Image'
 import Button from 'react-bootstrap/Button'
-//import Form from 'react-bootstrap/Form';
 import "bootstrap-icons/font/bootstrap-icons.css";
 import './style.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {Link} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 import useApi from '../../helpers/useApi'
+import {useSelector} from 'react-redux'
 
  function SingUp() {
-    const [Users, setUsers] = useState({ username: 'username', email: 'email', password: 'password' })
+    const [Users, setUsers] = useState({ username: 'username', email: 'email', password: 'password', role:'user' })
 
      const api = useApi()
+     const navigate = useNavigate()
 
     const onChangeInput = (event) => {
         event.preventDefault()
@@ -25,18 +26,28 @@ import useApi from '../../helpers/useApi'
         data[event.target.name] = event.target.value
         setUsers(data)
     }
+    
+    const {isAuth}= useSelector((state) =>state.users)
+
+    useEffect(() =>{
+        if (isAuth) {
+            navigate('/')
+        }
+    }, [isAuth])
 
 
-    const daftar = () => {
+    const Register = () => {
         api.requests({
             method: 'POST',
             url: 'auth/register',
             data: Users
         })
-            .then((res) => console.log(res))
+            .then((res) =>   navigate('/login'))
             .catch((err) => console.log(err))
           //  console.log(Users)
     }
+ 
+    // Popup.alert('I am alert, nice to meet you')
 
 
   return (
@@ -54,6 +65,7 @@ import useApi from '../../helpers/useApi'
                     <Link to="/login">
                     <Button className='button1'><b>Login</b></Button>
                     </Link>
+
                 </div>
                 </Col>
                 <Col md={ 2 } sm={ 12 }>
@@ -71,7 +83,7 @@ import useApi from '../../helpers/useApi'
                     <div className="mb-3 formGrup" >
                         <input type="password"  name="password" placeholder="Password"  onChange={onChangeInput} />
                     </div> 
-                    <Button className='button2' type="submit" onClick={daftar}> <b> Sign Up</b> </Button>
+                    <Button className='button2' type="submit" onClick={Register}> <b> Sign Up</b> </Button>
                     <div className="d-lg-none d-md-block"> <svg className="animate-bounce w-6 h-6 ..."> </svg>
                         <p className='text1' style={ { color:'white', marginTop:40 } }>Don’t have account?</p>
                         <Link to="/login">

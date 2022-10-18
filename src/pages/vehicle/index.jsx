@@ -13,19 +13,20 @@ import Navbars from '../../components/navbar'
 import Footer from '../../components/footer'
 import axios from 'axios';
 import {Link} from 'react-router-dom'
+//import { faCommentsDollar } from '@fortawesome/free-solid-svg-icons';
 // import { useParams } from 'react-router-dom/cjs/react-router-dom';
 
 
 function Vehicle_type() {
-const [result, setResult] = useState([])
+const [result, setResult] = useState("")
 const [searchTerm, setSearchTerm] = useState("");
 
 const getData = async () => {
-const { data } = await axios.get(process.env.REACT_APP_URL)
+const { data } = await axios.get(process.env.REACT_APP_URL+`vehicles/search/metic`)
 setResult(data.data);
-
+console.log(data.data)
 };
-let listToDisplay = result;
+// let listToDisplay = result;
 
 const handleChange = (e) => {
 setSearchTerm(e.target.value);
@@ -33,13 +34,13 @@ setSearchTerm(e.target.value);
 
 
 
-if (searchTerm !== "") {
-listToDisplay = result.filter((result) => {
-return result.name.toLowerCase().includes(searchTerm)
+// if (searchTerm !== "") {
+// listToDisplay = result.filter((result) => {
+// return result.name.toLowerCase().includes(searchTerm)
 
 
-});
-}
+// });
+//}
 
 useEffect(() => {
 getData();
@@ -77,8 +78,8 @@ return (
         <Row>
             <div class="content">
                 <Row>
-                    {listToDisplay.map((v, k) => {
-                    return v.type_vehicles === "cars" ? (
+                    {result.map((v, k) => {
+                    return v.type_vehicles === "motor bike" ? (
                     <Col key={k} lg={3} sm={12}>
                     <Card className="text-center cardName shadow">
                         <Image src={v.image} className="img" />
@@ -100,7 +101,7 @@ return (
         </Row>
 
 
-        <h3 className="contentName">MotorBike</h3>
+        {/* <h3 className="contentName">MotorBike</h3>
         <Row>
             <div class="content">
                 <Row>
@@ -152,7 +153,7 @@ return (
 
                 </Row>
             </div>
-        </Row>
+        </Row> */}
 
         <br></br>
     </Container>
