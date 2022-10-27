@@ -27,7 +27,7 @@ function useApi(urls = '') {
     
     useEffect(() => {
         setConfig();
-    }, [])
+    })
 
     return { requests: axios.create(requests) }
 }

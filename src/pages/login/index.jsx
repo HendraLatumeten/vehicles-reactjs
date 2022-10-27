@@ -28,7 +28,7 @@ import {useDispatch, useSelector} from 'react-redux'
         if (isAuth) {
             navigate('/')
         }
-    }, [isAuth])
+    })
 
     const onChangeInput = (event) => {
         event.preventDefault()

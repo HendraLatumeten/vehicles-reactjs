@@ -30,7 +30,7 @@ function Home() {
 
   useEffect(() =>{
     getDataUser()
-  },[])
+  })
   return (
     <>
   <Navbars />

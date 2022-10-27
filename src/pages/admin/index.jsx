@@ -13,7 +13,6 @@ import { useSelector } from "react-redux";
 
 function Admin() {
 const [result, setResult] = useState([])
-const { params } = useState(null)
 const { token } = useSelector((state) => state.users);
 const [dataSave, setData] = useState({ name: 'name', type_vehicles: 'type_vehicles', city: 'city', capacity: 'capacity', price:'price', image:'image' })
 

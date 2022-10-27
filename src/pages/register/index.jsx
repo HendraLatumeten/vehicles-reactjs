@@ -33,7 +33,7 @@ import {useSelector} from 'react-redux'
         if (isAuth) {
             navigate('/')
         }
-    }, [isAuth])
+    })
 
 
     const Register = () => {
